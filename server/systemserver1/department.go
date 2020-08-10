@@ -2,7 +2,7 @@ package systemserver1
 
 import (
 	"cloudDesktop/service/system/department"
-	"cloudDesktop/util/code"
+	"cloudDesktop/util/codes"
 	"cloudDesktop/util/errors"
 	"cloudDesktop/util/log"
 	"context"
@@ -33,7 +33,7 @@ func (s *DepartmentServer) List(ctx context.Context, req *pb.DepartmentListReq) 
 		return nil, err
 	}
 	// 返回结果
-	return &pb.DepartmentListResp{Code: code.Success, Msg: "Success", Data: departments}, nil
+	return &pb.DepartmentListResp{Code: codes.Success, Msg: "Success", Data: departments}, nil
 }
 
 // Add 实现 /twirp/system.v1.Department/Add 接口
@@ -48,7 +48,7 @@ func (s *DepartmentServer) Add(ctx context.Context, req *pb.DepartmentAddReq) (r
 		return nil, err
 	}
 	return &pb.DepartmentAddResp{
-		Code: code.AddSuccess,
+		Code: codes.AddSuccess,
 		Msg:  "添加部门成功",
 		Data: id, // Todo last id
 	}, nil
@@ -65,7 +65,7 @@ func (s *DepartmentServer) Delete(ctx context.Context, req *pb.DepartmentDeleteR
 		return nil, err
 	}
 	return &pb.DepartmentDeleteResp{
-		Code: code.DeleteSuccess,
+		Code: codes.DeleteSuccess,
 		Msg:  "删除部门成功",
 	}, nil
 }

@@ -1,4 +1,4 @@
-package code
+package codes
 
 const (
 	// 成功code: 1xx

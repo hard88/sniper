@@ -32,8 +32,8 @@ func CreateTable(ctx context.Context) error {
     name VARCHAR(255) NOT NULL UNIQUE,
 	parent BIGINT NOT NULL,
     description TEXT,
-	created BIGINT,
-    deleted BIGINT
+	created BIGINT NOT NULL,
+    deleted BIGINT NOT NULL
 	);`
 
 	q := db.SQLCreate("department", sql)

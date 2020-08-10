@@ -2,14 +2,16 @@
 LOG_LEVEL = "debug"
 
 # DB 配置，格式为 DB_${NAME}_DSN，内容参考
-# https://github.com/go-sql-driver/mysql#dsn-data-source-name
-# 必须设置 parseTime 选项
+# https://pkg.go.dev/github.com/lib/pq?tab=doc
 # 通过 ${NAME} 可以获取 DB 连接池
-# 时区问题参考 https://www.jianshu.com/p/3f7fc9093db4
+# 测试时用的DB
 DB_TEST_DSN = "user=wrh dbname=test sslmode=disable"
+# 开发或正式用的DB
 DB_DEFAULT_DSN = "user=wrh dbname=mydb sslmode=disable"
+# 修改DB配置后是否热加载，配合测试使用
 HOT_LOAD_DB = true
 
+## DB最大连接数
 DB_DEFAULT_MAX_OPEN_CONNS = 20
 
 # MC 配置，格式为 MC_${NAME}_HOSTS = "host1,host2"

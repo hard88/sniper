@@ -52,7 +52,7 @@ message HelloMessage {
 
 // 出参定义,
 // 理论上可以输出任意消息
-// 但我们的业务要求只能包含 code, msg, data 三个字段，
+// 但我们的业务要求只能包含 codes, msg, data 三个字段，
 // 其中 data 需要定义成 message
 // 开源版本可以怱略这一约定
 message HelloResponse {

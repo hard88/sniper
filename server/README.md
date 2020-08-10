@@ -109,7 +109,7 @@ if req.ID <= 0 {
 // X-Trace-Id: kg1od386gjto
 //
 // {
-//     "code": "invalid_argument",
+//     "codes": "invalid_argument",
 //     "meta": {
 //         "argument": "page_size"
 //     },
@@ -128,7 +128,7 @@ if err := bookshelf.AddFavorite(ctx, id); err != nil {
 // X-Trace-Id: 3njq5120j3c1n
 //
 // {
-//     "code": "internal",
+//     "codes": "internal",
 //     "meta": {
 //         "cause": "*net.OpError"
 //     },

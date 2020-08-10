@@ -18,6 +18,7 @@ func DBMigrate(ctx context.Context, DSN string) (clean func(), err error) {
 		return nil, err
 	}
 
+	// clean 清空数据库表结构
 	clean = func() {
 		c := db.Get(ctx, "default")
 		log.Get(ctx).Infoln("clean up")

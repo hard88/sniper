@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// Test Last Insert ID 用postgres的方式获取插入数据后的id
 func TestLastInsertID(t *testing.T) {
 	ctx := context.Background()
 

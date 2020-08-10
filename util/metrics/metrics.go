@@ -63,7 +63,7 @@ func init() {
 		Help:        "RPC latency distributions",
 		Buckets:     defBuckets,
 		ConstLabels: map[string]string{"app": conf.AppID},
-	}, []string{"path", "code"})
+	}, []string{"path", "codes"})
 	prometheus.MustRegister(RPCDurationsSeconds)
 
 	DBDurationsSeconds = prometheus.NewHistogramVec(prometheus.HistogramOpts{
@@ -107,7 +107,7 @@ func init() {
 		Name:        "log_total",
 		Help:        "log total",
 		ConstLabels: map[string]string{"app": conf.AppID},
-	}, []string{"code"})
+	}, []string{"codes"})
 	prometheus.MustRegister(LogTotal)
 
 	JobTotal = prometheus.NewCounterVec(prometheus.CounterOpts{
@@ -115,7 +115,7 @@ func init() {
 		Name:        "job_total",
 		Help:        "job total",
 		ConstLabels: map[string]string{"app": conf.AppID},
-	}, []string{"code"})
+	}, []string{"codes"})
 	prometheus.MustRegister(JobTotal)
 
 	MQDurationsSeconds = prometheus.NewHistogramVec(prometheus.HistogramOpts{
