@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package system.v1;
+
+option go_package="system_v1";
+
+// FIXME 服务必须写注释
+service User {
+    // FIXME 接口必须写注释
+    //
+    // 这里的行尾注释 sniper:foo 有特殊含义，是可选的
+    // 框架会将此处冒号后面的值(foo)注入到 ctx 中，
+    // 用户可以使用 twirp.MethodOption(ctx) 查询，并执行不同的逻辑
+    // 这个 sniper 前缀可以通过 --twirp_out=option_prefix=sniper:. 自定义
+    rpc Login(UserLoginReq) returns (UserLoginResp); // sniper:user
+
+}
+
+message LoginMessage {
+    string token =1;
+}
+
+message UserLoginReq {
+    // 登陆名
+    string name = 1;
+    // 密码
+    string password = 2;
+}
+
+message UserLoginResp {
+    // 业务错误码[机读]，必须大于零
+    int32 code = 1;
+    // 业务错误信息[人读]
+    string msg = 2;
+    // 业务数据对象
+    LoginMessage data = 3;
+}

@@ -14,13 +14,13 @@ import (
 	"syscall"
 	"time"
 
-	"sniper/util"
+	"cloudDesktop/util"
 
-	"sniper/util/conf"
-	"sniper/util/ctxkit"
-	"sniper/util/log"
-	"sniper/util/metrics"
-	"sniper/util/trace"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/ctxkit"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
+	"cloudDesktop/util/trace"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/prometheus/client_golang/prometheus/promhttp"

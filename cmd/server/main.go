@@ -14,11 +14,11 @@ import (
 	"syscall"
 	"time"
 
-	"sniper/util"
-	"sniper/util/conf"
-	"sniper/util/ctxkit"
-	"sniper/util/log"
-	"sniper/util/trace"
+	"cloudDesktop/util"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/ctxkit"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/trace"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"

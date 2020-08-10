@@ -5,8 +5,8 @@ import (
 	"context"
 	"os"
 
-	"sniper/util/conf"
-	"sniper/util/ctxkit"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/ctxkit"
 
 	"github.com/k0kubun/pp"
 	isatty "github.com/mattn/go-isatty"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"sniper/util/ctxkit"
-	"sniper/util/trace"
+	"cloudDesktop/util/ctxkit"
+	"cloudDesktop/util/trace"
 
 	"github.com/bilibili/twirp"
 )

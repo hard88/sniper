@@ -1,4 +1,4 @@
-module sniper
+module cloudDesktop
 
 go 1.13
 
@@ -12,12 +12,11 @@ require (
 	github.com/dave/dst v0.25.5
 	github.com/dlmiddlecote/sqlstats v1.0.0
 	github.com/fsnotify/fsnotify v1.4.7
-	github.com/go-sql-driver/mysql v1.5.0
-	github.com/golang/protobuf v1.3.2
-	github.com/google/go-cmp v0.4.0 // indirect
+	github.com/golang/protobuf v1.4.1
 	github.com/jarcoal/httpmock v1.0.3
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/k0kubun/pp v3.0.1+incompatible
+	github.com/lib/pq v1.8.0
 	github.com/mattn/go-colorable v0.1.4 // indirect
 	github.com/mattn/go-isatty v0.0.9
 	github.com/opentracing/opentracing-go v1.1.0
@@ -33,4 +32,5 @@ require (
 	go.uber.org/atomic v1.5.1 // indirect
 	go.uber.org/automaxprocs v1.3.0
 	golang.org/x/text v0.3.2 // indirect
+	google.golang.org/protobuf v1.25.0
 )

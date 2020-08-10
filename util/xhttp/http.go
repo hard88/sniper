@@ -12,10 +12,10 @@ import (
 	"regexp"
 	"time"
 
-	"sniper/util/errors"
-	"sniper/util/log"
-	"sniper/util/metrics"
-	"sniper/util/trace"
+	"cloudDesktop/util/errors"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
+	"cloudDesktop/util/trace"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"

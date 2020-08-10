@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"sniper/util/conf"
-	"sniper/util/ctxkit"
-	"sniper/util/log"
-	"sniper/util/metrics"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/ctxkit"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
 
 	"github.com/bilibili/twirp"
 	"github.com/opentracing/opentracing-go"

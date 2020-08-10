@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"sniper/util/conf"
-	"sniper/util/errors"
-	"sniper/util/log"
-	"sniper/util/metrics"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/errors"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
 
 	"github.com/bilibili/memcache"
 	"github.com/bilibili/net/pool"

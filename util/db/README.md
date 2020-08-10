@@ -13,7 +13,7 @@ DB 配置，格式为 DB_${NAME}_DSN，内容参考 https://github.com/go-sql-dr
 # 示例
 ```go
 import "context"
-import "sniper/util/db"
+import "cloudDesktop/util/db"
 
 ctx := context.Background()
 c := db.Get(ctx, "default")

@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"sniper/util/conf"
+	"cloudDesktop/util/conf"
 
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"

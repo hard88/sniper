@@ -1,7 +1,7 @@
 package metrics
 
 import (
-	"sniper/util/conf"
+	"cloudDesktop/util/conf"
 
 	"github.com/prometheus/client_golang/prometheus"
 )

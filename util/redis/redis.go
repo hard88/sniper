@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
-	"sniper/util/conf"
-	"sniper/util/log"
-	"sniper/util/metrics"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
 
 	"github.com/bilibili/net/pool"
 	"github.com/bilibili/redis"

@@ -13,7 +13,7 @@ MC_XXX_HOSTS 只能填一个 memcache 实例。
 # 示例
 ```go
 import "context"
-import "sniper/util/mc"
+import "cloudDesktop/util/mc"
 
 ctx := context.Background()
 c := mc.Get(ctx, "default")

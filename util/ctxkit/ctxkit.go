@@ -14,6 +14,8 @@ const (
 	StartTimeKey
 	// UserIPKey 用户 IP，类型：string
 	UserIPKey
+	// UserIDKey 用户 ID，类型：int64
+	UserIDKey
 )
 
 // GetTraceID 获取用户请求标识
@@ -31,4 +33,9 @@ func WithTraceID(ctx context.Context, traceID string) context.Context {
 func GetUserIP(ctx context.Context) string {
 	ip, _ := ctx.Value(UserIPKey).(string)
 	return ip
+}
+
+func GetUserID(ctx context.Context) int64 {
+	id, _ := ctx.Value(UserIDKey).(int64)
+	return id
 }

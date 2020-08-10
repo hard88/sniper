@@ -1,8 +1,8 @@
 package main
 
 import (
-	"sniper/cmd/sniper/rename"
-	"sniper/cmd/sniper/rpc"
+	"cloudDesktop/cmd/sniper/rename"
+	"cloudDesktop/cmd/sniper/rpc"
 
 	"github.com/spf13/cobra"
 )

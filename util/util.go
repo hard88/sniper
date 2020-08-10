@@ -1,12 +1,12 @@
 package util
 
 import (
-	_ "sniper/util/conf" // init conf
+	_ "cloudDesktop/util/conf" // init conf
 
-	"sniper/util/db"
-	"sniper/util/log"
-	"sniper/util/mc"
-	"sniper/util/redis"
+	"cloudDesktop/util/db"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/mc"
+	"cloudDesktop/util/redis"
 )
 
 // GatherMetrics 收集一些被动指标

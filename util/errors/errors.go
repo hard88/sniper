@@ -11,6 +11,9 @@ var NotLoginError = twirp.NewError(twirp.Unauthenticated, "must login")
 // PermissionDeniedError 权限不够
 var PermissionDeniedError = twirp.NewError(twirp.PermissionDenied, "permission denied")
 
+// DuplicateObjectError
+var DuplicateObjectError = twirp.NewError(twirp.AlreadyExists, "对象已存在")
+
 // Wrap 包装错误信息，附加调用栈
 // 第二个参数只能是 string，也可以不传，大部分情况不用传
 func Wrap(err error, args ...interface{}) error {

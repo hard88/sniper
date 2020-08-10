@@ -13,7 +13,7 @@ REDIS_XXX_HOST 只能填一个 redis 实例。
 # 示例
 ```go
 import "context"
-import "sniper/util/redis"
+import "cloudDesktop/util/redis"
 
 ctx := context.Background()
 c := redis.Get(ctx, "default")

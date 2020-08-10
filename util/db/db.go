@@ -1,4 +1,4 @@
-// Package db 提供 mysql 封装
+// Package db 提供 postgres sql 封装
 package db
 
 import (
@@ -8,13 +8,13 @@ import (
 	"sync"
 	"time"
 
-	"sniper/util/conf"
-	"sniper/util/errors"
-	"sniper/util/log"
-	"sniper/util/metrics"
+	"cloudDesktop/util/conf"
+	"cloudDesktop/util/errors"
+	"cloudDesktop/util/log"
+	"cloudDesktop/util/metrics"
 
 	"github.com/dlmiddlecote/sqlstats"
-	"github.com/go-sql-driver/mysql"
+	"github.com/lib/pq"
 	opentracing "github.com/opentracing/opentracing-go"
 	"github.com/opentracing/opentracing-go/ext"
 	"github.com/prometheus/client_golang/prometheus"
@@ -95,10 +95,28 @@ func SQLSelect(table string, sql string) Query {
 	}
 }
 
+// SQLCreate 构造 create table语句
+func SQLCreate(table string, sql string) Query {
+	return Query{
+		table:   table,
+		sql:     sql,
+		sqlType: "Create",
+	}
+}
+
+// SQLAlter 构造 alter table语句
+func SQLAlter(table string, sql string) Query {
+	return Query{
+		table:   table,
+		sql:     sql,
+		sqlType: "Alter",
+	}
+}
+
 // Get 根据配置名字创建并返回 DB 连接池对象
 //
 // DB 配置名字格式为 DB_{$name}_DSN
-// DB 配置内容格式请参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name
+// DB 配置内容格式请参考 https://pkg.go.dev/github.com/lib/pq?tab=doc
 // Get 是并发安全的，可以在多协程下使用
 func Get(ctx context.Context, name string) *DB {
 	lock.RLock()
@@ -111,7 +129,7 @@ func Get(ctx context.Context, name string) *DB {
 
 	dsn := conf.Get("DB_" + name + "_DSN")
 
-	sqldb, err := sql.Open("mysql", dsn)
+	sqldb, err := sql.Open("postgres", dsn)
 
 	if err != nil {
 		log.Get(ctx).Panic(err)
@@ -165,7 +183,7 @@ func execContext(ctx context.Context, name string, db unionDB, query Query, args
 	span, ctx := opentracing.StartSpanFromContext(ctx, "ExecContext")
 	defer span.Finish()
 
-	span.SetTag(string(ext.Component), "mysql")
+	span.SetTag(string(ext.Component), "postgres")
 	span.SetTag(string(ext.DBInstance), name)
 	span.SetTag(string(ext.DBStatement), query.sql)
 
@@ -195,7 +213,7 @@ func queryContext(ctx context.Context, name string, db unionDB, query Query, arg
 	span, ctx := opentracing.StartSpanFromContext(ctx, "QueryContext")
 	defer span.Finish()
 
-	span.SetTag(string(ext.Component), "mysql")
+	span.SetTag(string(ext.Component), "postgres")
 	span.SetTag(string(ext.DBInstance), name)
 	span.SetTag(string(ext.DBStatement), query.sql)
 
@@ -225,7 +243,7 @@ func queryRowContext(ctx context.Context, name string, db unionDB, query Query, 
 	span, ctx := opentracing.StartSpanFromContext(ctx, "QueryRowContext")
 	defer span.Finish()
 
-	span.SetTag(string(ext.Component), "mysql")
+	span.SetTag(string(ext.Component), "postgres")
 	span.SetTag(string(ext.DBInstance), name)
 	span.SetTag(string(ext.DBStatement), query.sql)
 
@@ -322,7 +340,7 @@ func (db *DB) ExecTx(ctx context.Context, f TxFunc) error {
 	span, ctx := opentracing.StartSpanFromContext(ctx, "ExecTx")
 	defer span.Finish()
 
-	span.SetTag(string(ext.Component), "mysql")
+	span.SetTag(string(ext.Component), "postgres")
 
 	tx, err := db.db.BeginTx(ctx, nil)
 	if err != nil {
@@ -361,15 +379,14 @@ func IsNoRowsErr(err error) bool {
 	return errors.Cause(err) == sql.ErrNoRows
 }
 
-// IsDuplicateEntryErr 判断是否为唯一键冲突错误
-func IsDuplicateEntryErr(err error) bool {
+// IsDuplicateObject 判断是否为唯一键冲突错误
+func IsDuplicateObject(err error) bool {
 	if err == nil {
 		return false
 	}
 
-	// https://stackoverflow.com/a/41666013
-	if me, ok := errors.Cause(err).(*mysql.MySQLError); ok {
-		return me.Number == 1062
+	if me, ok := errors.Cause(err).(*pq.Error); ok {
+		return me.Code == "23505"
 	}
 
 	return false

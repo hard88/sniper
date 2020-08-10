@@ -3,8 +3,8 @@ package hook
 import (
 	"context"
 
-	"sniper/util/ctxkit"
-	"sniper/util/errors"
+	"cloudDesktop/util/ctxkit"
+	"cloudDesktop/util/errors"
 
 	"github.com/bilibili/twirp"
 )
